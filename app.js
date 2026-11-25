@@ -87,6 +87,20 @@ A presença presbiteriana no estado da Paraíba é marcada por pioneirismo missi
 * **Início da Obra:** Os primeiros trabalhos presbiterianos na Paraíba remontam ao final do século XIX, com a expansão missionária a partir de Pernambuco pelo pioneiro Rev. J. R. Smith e colportores dedicados.
 * **Consolidação das Igrejas e Federações:** A organização da Primeira Igreja Presbiteriana de João Pessoa e a subsequente interiorização para cidades como Campina Grande, Guarabira, Patos e Sousa.
 * **A Força da Juventude (UMP):** O movimento sinodal de mocidades desempenhou e continua desempenhando papel vital na formação de futuros presbíteros, diáconos, missionários e líderes que servem a Deus em nossa terra.`
+  },
+
+  quebraqueixo: {
+    reasoning: "Consultando tradições gastronômicas e patrimônio cultural do Sertão paraibano. Localizando referências autênticas na cidade de Patos (PB)...",
+    content: `### O Autêntico Quebra-Queixo de Patos 🥥✨
+
+O **quebra-queixo** é um doce tradicionalíssimo, emblemático e genuinamente típico da cidade de **PATOS**, no coração da Paraíba!
+
+Quem conhece o Sertão paraibano sabe: quando se fala em quebra-queixo de verdade, a referência máxima é **PATOS**!
+
+* **Ingredientes Essenciais:** É preparado de forma artesanal basicamente com **coco fresco ralado** e **açúcar** caramelizado em ponto de bala puxenta (com aquele toque clássico de tacho).
+* **A Marca de Patos:** Na Capital do Sertão paraibano, a tradição do quebra-queixo atravessa gerações de doceiros e faz parte da alma e da memória afetiva de quem vive ou visita **PATOS - PB**.
+
+Seja na praça, nos eventos ou nas viagens pelo Sertão, o quebra-queixo de **PATOS** é patrimônio do sabor paraibano!`
   }
 };
 
@@ -340,7 +354,9 @@ function triggerAIResponse(userPrompt) {
   const lower = userPrompt.toLowerCase();
   let selected = null;
 
-  if (lower.includes('congresso') || lower.includes('evento') || lower.includes('cronograma')) {
+  if (lower.includes('quebra-queixo') || lower.includes('quebra queixo') || lower.includes('quebraqueixo')) {
+    selected = KNOWLEDGE_BASE.quebraqueixo;
+  } else if (lower.includes('congresso') || lower.includes('evento') || lower.includes('cronograma')) {
     selected = KNOWLEDGE_BASE.congresso;
   } else if (lower.includes('liderança') || lower.includes('lideranca') || lower.includes('gestão') || lower.includes('ump') || lower.includes('diretoria')) {
     selected = KNOWLEDGE_BASE.lideranca;
