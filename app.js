@@ -21,107 +21,72 @@ const state = {
   isRecording: false
 };
 
-// Banco de Respostas Especializadas para Demonstração Interativa
+// Banco de Respostas Especializadas no Contexto Presbiteriano e Sinodal da Paraíba
 const KNOWLEDGE_BASE = {
-  software: {
-    reasoning: "Analisando padrões de arquitetura orientada a eventos. Avaliando throughput de Kafka, particionamento por hash de chave, idempotência de consumidores com Redis e política de outbox pattern com PostgreSQL...",
-    content: `### Arquitetura de Microsserviços com Apache Kafka
+  congresso: {
+    reasoning: "Consultando diretrizes sinodais, cronograma da Sinodal de Mocidades da Paraíba (SMPB/IPB), temas reformados para congressos e dinâmica de acolhimento de federações e sociedades locais...",
+    content: `### Planejamento Estratégico — Congresso Sinodal de Mocidades da Paraíba
 
-Para garantir **alta resiliência** e **baixa latência** em sistemas distribuídos de escala crítica, a seguinte topologia é recomendada:
+O planejamento do **Congresso da Sinodal de Mocidades da Paraíba** deve unir profundidade bíblica reformada, comunhão fraternal e excelência organizacional:
 
-1. **Transactional Outbox Pattern**: Evita inconsistências de duas fases (2PC) salvando o evento na mesma transação de banco de dados do microsserviço produtor.
-2. **Kafka Partitioning Strategy**: Distribuição com chaves consistentes para assegurar ordenação estrita por entidade (ex: \`tenant_id\` ou \`account_id\`).
-3. **Dead Letter Queue (DLQ)**: Isolamento automático de mensagens corrompidas com retenção de 7 dias e alertas para SRE.
+1. **Tema e Teologia Bíblica:**
+   - Foco centrado no lema da UMP: *"Alegres na esperança, fortes na fé, dedicados no amor, unidos no trabalho"* (Romanos 12:12).
+   - Sessões plenárias com pastores preletores comprometidos com a sã doutrina e a confessionalidade de Westminster.
 
-\`\`\`go
-package main
+2. **Integração das Federações Presbiteriais:**
+   - Participação ativa das federações da Paraíba (litoral, brejo e sertão paraibano).
+   - Momentos dedicados para apresentação de projetos missionários, vigílias e painéis vocacionais.
 
-import (
-    "context"
-    "fmt"
-    "github.com/segmentio/kafka-go"
-)
+3. **Cronograma Sugerido de Atividades:**
+   - **Sexta-feira (Noite):** Recepção das caravanas, Culto de Abertura e Louvor Congregacional.
+   - **Sábado (Manhã e Tarde):** Oficinas temáticas de liderança cristã, evangelismo urbano e plenária geral.
+   - **Domingo (Manhã):** Ceia do Senhor, consagração da nova diretoria sinodal e comissionamento das mocidades locais.
 
-// DispatchEvent envia o evento com garantia de entrega At-Least-Once
-func DispatchEvent(ctx context.Context, topic, key string, payload []byte) error {
-    writer := kafka.NewWriter(kafka.WriterConfig{
-        Brokers:      []string{"kafka-cluster.internal:9092"},
-        Topic:        topic,
-        Balancer:     &kafka.LeastBytes{},
-        RequiredAcks: int(kafka.RequireAll), // Máxima durabilidade
-    })
-    defer writer.Close()
-
-    return writer.WriteMessages(ctx, kafka.Message{
-        Key:   []byte(key),
-        Value: payload,
-    })
-}
-\`\`\`
-
-> **Nota Técnica:** O tempo médio de replicação com \`acks=all\` em cluster com 3 réplicas é inferior a **4.8ms** com compressão Snappy habilitada.`
+> *"A mocidade presbiteriana é força viva na proclamação do Evangelho em todo o solo paraibano."*`
   },
 
-  editorial: {
-    reasoning: "Carregando preceitos do DESIGN.md: minimalismo editorial, alto contraste (60-30-10), tipografia com tracking negativo e ausência de ruídos visuais. Formatando manifesto de lançamento...",
-    content: `### Estratégia Editorial de Lançamento — Impacto & Rigor
+  lideranca: {
+    reasoning: "Acessando Manual Unificado das Sociedades Internas da IPB, Constituição da IPB e princípios de liderança servidora para executivas de UMP...",
+    content: `### Liderança Eficaz na UMP (União de Mocidade Presbiteriana)
 
-Uma campanha de alta precisão baseia-se na eliminação sistemática do supérfluo para evidenciar a substância técnica:
+A liderança de jovens no contexto presbiteriano fundamenta-se no princípio bíblico da **mordomia cristã e serviço voluntário**:
 
-* **Tese Central:** *"A inteligência não grita, ela executa com precisão geométrica."*
-* **Paleta Predominante:** 60% Azul Marinho Profundo (\`#050B18\`), 30% Superfície Arquitetural (\`#101C38\`) e 10% Destaques de Contraste Branco Puro com acentos em Azul Elétrico (\`#0057FF\`).
-* **Ritmo Tipográfico:**
-  - Títulos monumentais com espaçamento apertado (\`-0.04em\`).
-  - Blocos de texto contidos a \`60ch\` para ergonomia de leitura máxima.
+* **Conselho da Igreja e Sinodal:** Manter alinhamento e submissão amorosa aos presbíteros e pastores relatores, promovendo transparência e prestação de contas.
+* **Pilares de Gestão da Diretoria:**
+  1. **Espiritualidade:** Oração contínua e estudo fiel das Escrituras Sagradas.
+  2. **Comunhão & Discipulado:** Cuidado individual com os jovens recém-chegados e fortalecimento das sociedades locais.
+  3. **Ação Social e Evangelismo:** Projetos de impacto comunitário nas cidades da Paraíba.
 
-#### Fases de Dispersão:
-1. **Teaser Técnico (Semana 1):** Demonstração do benchmark de raciocínio puro sem ornamentos.
-2. **Manifesto Visual (Semana 2):** Lançamento da interface fluida com motion sob curva de Bézier \`cubic-bezier(0.22, 1, 0.36, 1)\`.
-3. **Acesso por Convites (Semana 3):** Onboarding seletivo para líderes de engenharia e produto.`
+#### Boas Práticas Administrativas:
+- Atas e relatórios estatísticos mantidos rigorosamente em dia para encaminhamento ao Sínodo e Presbitérios.
+- Comunicação assertiva e visualmente inspiradora através das mídias sociais da Sinodal.`
   },
 
-  code: {
-    reasoning: "Inspecionando planos de execução EXPLAIN ANALYZE em PostgreSQL. Identificando gargalo de sequential scan, I/O wait e lock contention em consultas analíticas...",
-    content: `### Otimização Extrema de Consultas SQL (PostgreSQL / CockroachDB)
+  devocional: {
+    reasoning: "Elaborando esboço devocional com exegese bíblica reformada para jovens em acampamentos e retiros espirituais...",
+    content: `### Devocional: Firmes na Fé em Tempos Desafiadores
 
-Ao analisar planos de execução onde o tempo de resposta excedeu 450ms, a causa principal frequentemente decorre de **Sequential Scans** e cálculos de junção na CPU:
+**Texto Bíblico:** 1 Timóteo 4:12 — *"Ninguém despreze a tua mocidade; pelo contrário, torna-te padrão dos fiéis, na palavra, no procedimento, no amor, na fé, na pureza."*
 
-\`\`\`sql
--- Antes: Custo computacional elevado O(N) com Sequential Scan
--- SELECT * FROM orders WHERE customer_id = 'c_994' AND status = 'COMPLETED' ORDER BY created_at DESC;
+#### Reflexão Pastoral para Jovens:
+O apóstolo Paulo instrui o jovem Timóteo a não se intimidar pela sua pouca idade, mas a demonstrar maturidade através de um testemunho irrepreensível:
 
--- Solução: Índice Composto com Cobertura (Covering Index)
-CREATE INDEX CONCURRENTLY idx_orders_customer_status_created 
-ON orders (customer_id, status, created_at DESC)
-INCLUDE (total_amount, currency);
+1. **Na Palavra e no Procedimento:** Nossa fala e atitudes no cotidiano devem refletir a cosmovisão cristã bíblica.
+2. **No Amor e na Fé:** O amor prático aos irmãos e a confiança inabalável na soberania de Deus.
+3. **Na Pureza:** Santidade de coração, mente e conduta em meio à cultura contemporânea.
 
--- Consulta Otimizada utilizando Index Only Scan:
-EXPLAIN ANALYZE
-SELECT customer_id, status, created_at, total_amount, currency
-FROM orders
-WHERE customer_id = 'c_994' 
-  AND status = 'COMPLETED'
-ORDER BY created_at DESC
-LIMIT 20;
-\`\`\`
-
-**Resultados do Benchmark:**
-- Latência: Redução de **380ms** para **1.8ms** (99.5% de melhora).
-- Consumo de memória: Cache hit ratio elevado para **99.8%**.`
+**Oração:** *Senhor nosso Deus, capacita os jovens da Sinodal da Paraíba a viverem como luz de Cristo, servindo com fidelidade e fervor à Tua Igreja.*`
   },
 
-  research: {
-    reasoning: "Consultando bases conceituais de transformadores esparsos, modelos de raciocínio tipo test-time compute scaling (MCTS) e quantização dinâmica em 4-bits...",
-    content: `### Síntese: Fronteiras em Modelos de Linguagem e Raciocínio (2026+)
+  historia: {
+    reasoning: "Resgatando marcos históricos da Igreja Presbiteriana do Brasil no Nordeste, pioneirismo na Paraíba e a fundação dos movimentos de mocidade presbiteriana...",
+    content: `### Memória Histórica: Presbiterianismo na Paraíba
 
-A evolução dos modelos de fundação transicionou de puramente escalar parâmetros pré-treinados para **Test-Time Compute Scaling** e verificação formal:
+A presença presbiteriana no estado da Paraíba é marcada por pioneirismo missionário e compromisso educacional e evangelístico:
 
-1. **Test-Time Reasoning (Raciocínio em Tempo de Inferência):**
-   - Em vez de gerar a resposta imediatamente, o modelo formula cadeias de pensamento paralelas e utiliza avaliadores de consistência lógica antes da emissão final.
-2. **Arquiteturas Híbridas (State Space Models + Attention):**
-   - Combinação de camadas Mamba/SSM com blocos de Multi-Head Attention para processar contextos de múltiplos milhões de tokens com complexidade linear $O(N)$.
-3. **Agentes Autônomos de Loop Fechado:**
-   - Integração de ambientes de sandbox onde a IA escreve código, roda testes de regressão automatizados e corrige seus próprios erros sem intervenção humana.`
+* **Início da Obra:** Os primeiros trabalhos presbiterianos na Paraíba remontam ao final do século XIX, com a expansão missionária a partir de Pernambuco pelo pioneiro Rev. J. R. Smith e colportores dedicados.
+* **Consolidação das Igrejas e Federações:** A organização da Primeira Igreja Presbiteriana de João Pessoa e a subsequente interiorização para cidades como Campina Grande, Guarabira, Patos e Sousa.
+* **A Força da Juventude (UMP):** O movimento sinodal de mocidades desempenhou e continua desempenhando papel vital na formação de futuros presbíteros, diáconos, missionários e líderes que servem a Deus em nossa terra.`
   }
 };
 
@@ -371,47 +336,38 @@ function renderUserMessage(text) {
 
 // Gerar resposta inteligente
 function triggerAIResponse(userPrompt) {
-  // Identificar tópicos ou usar IA generativa padrão
+  // Identificar tópicos ou usar IA generativa focada no contexto presbiteriano e sinodal
   const lower = userPrompt.toLowerCase();
   let selected = null;
 
-  if (lower.includes('microsservi') || lower.includes('kafka') || lower.includes('arquitetura')) {
-    selected = KNOWLEDGE_BASE.software;
-  } else if (lower.includes('editorial') || lower.includes('estratégia') || lower.includes('marketing') || lower.includes('design')) {
-    selected = KNOWLEDGE_BASE.editorial;
-  } else if (lower.includes('sql') || lower.includes('código') || lower.includes('banco') || lower.includes('otimizar')) {
-    selected = KNOWLEDGE_BASE.code;
-  } else if (lower.includes('pesquisa') || lower.includes('ia') || lower.includes('modelo') || lower.includes('futuro')) {
-    selected = KNOWLEDGE_BASE.research;
+  if (lower.includes('congresso') || lower.includes('evento') || lower.includes('cronograma')) {
+    selected = KNOWLEDGE_BASE.congresso;
+  } else if (lower.includes('liderança') || lower.includes('lideranca') || lower.includes('gestão') || lower.includes('ump') || lower.includes('diretoria')) {
+    selected = KNOWLEDGE_BASE.lideranca;
+  } else if (lower.includes('devocional') || lower.includes('bíblia') || lower.includes('biblia') || lower.includes('estudo') || lower.includes('oração')) {
+    selected = KNOWLEDGE_BASE.devocional;
+  } else if (lower.includes('história') || lower.includes('historia') || lower.includes('paraíba') || lower.includes('paraiba') || lower.includes('ipb')) {
+    selected = KNOWLEDGE_BASE.historia;
   } else {
-    // Resposta contextual rica gerada dinamicamente
+    // Resposta contextual rica gerada dinamicamente com ênfase na Sinodal de Mocidades da Paraíba
     selected = {
-      reasoning: `Contexto compreendido com sucesso. Ativando modelo de alta fidelidade ${state.currentModel} com inferência vetorial e validação de consistência...`,
+      reasoning: `Analisando demanda sob a cosmovisão bíblica reformada e diretrizes da Sinodal de Mocidades da Paraíba. Alinhando princípios confessionais (IPB), engajamento de jovens e metodologia sinodal...`,
       content: `### Resposta do Sinodeias
 
-Compreendi perfeitamente sua solicitação sobre **"${escapeHtml(userPrompt)}"**.
+Compreendi sua consulta sobre **"${escapeHtml(userPrompt)}"**.
 
-A abordagem recomendada sintetiza três princípios essenciais para alta eficiência:
+No contexto do ministério da juventude e da **Sinodal de Mocidades da Paraíba (IPB)**, destacamos três orientações estratégicas:
 
-1. **Estruturação Analítica:** Decomposição do problema em componentes modulares com responsabilidades estritas e mensuráveis.
-2. **Execução Precisa:** Aplicação de padrões modernos, priorizando desempenho, legibilidade e manutenibilidade contínua.
-3. **Iteração Baseada em Métricas:** Validação empírica contínua contra os objetivos definidos.
+1. **Fundamentação Bíblica e Confessional:**
+   - Toda iniciativa deve ter como alicerce as Escrituras Sagradas e os símbolos de fé de Westminster, promovendo jovens teologicamente conscientes e firmes na fé.
 
-\`\`\`javascript
-// Exemplo de pipeline de processamento em tempo real
-async function processIdeaPipeline(input) {
-  const normalized = input.trim().toLowerCase();
-  const evaluation = await sinodeias.evaluate({
-    context: normalized,
-    precisionMode: "editorial-precision",
-    timestamp: Date.now()
-  });
+2. **Engajamento Comunitário e Fraternal:**
+   - Fortalecer a comunhão entre as federações e sociedades locais da Paraíba, incentivando projetos que unam evangelismo, serviço ao próximo e acolhimento.
 
-  return evaluation.insights;
-}
-\`\`\`
+3. **Planejamento e Liderança Servidora:**
+   - Trabalhar com metas claras, oração contínua e comunicação inspiradora, honrando o lema: *"Alegres na esperança, fortes na fé, dedicados no amor, unidos no trabalho"*.
 
-Deseja que eu aprofunde algum aspecto técnico específico ou desenvolva um plano de ação detalhado?`
+Deseja que eu elabore um plano de ação, esboço de projeto ou proposta de atividade específica para a sua UMP ou Federação?`
     };
   }
 
@@ -695,15 +651,15 @@ function loadHistoricChat(type) {
   dom.chatInner.innerHTML = '';
   if (dom.welcomeScreen) dom.welcomeScreen.style.display = 'none';
 
-  const demoData = KNOWLEDGE_BASE[type] || KNOWLEDGE_BASE.software;
+  const demoData = KNOWLEDGE_BASE[type] || KNOWLEDGE_BASE.congresso;
   const promptMap = {
-    software: "Como projetar uma arquitetura de microsserviços orientada a eventos usando Kafka?",
-    editorial: "Crie uma estratégia editorial e manifesto visual de lançamento para um produto de IA.",
-    code: "Como otimizar consultas analíticas complexas no PostgreSQL?",
-    research: "Quais são as principais tendências e avanços recentes em arquiteturas de IA?"
+    congresso: "Como organizar a programação e acolhimento para o Congresso Sinodal de Mocidades?",
+    lideranca: "Quais são as melhores práticas para a gestão e liderança da diretoria da UMP?",
+    devocional: "Escreva um devocional bíblico reformado para o retiro da mocidade.",
+    historia: "Conte sobre a história e os marcos do presbiterianismo e da mocidade na Paraíba."
   };
 
-  const userPrompt = promptMap[type] || "Explique o padrão de arquitetura.";
+  const userPrompt = promptMap[type] || "Orientações sobre o ministério de mocidades.";
   renderUserMessage(userPrompt);
 
   // Renderizar resposta completa instantânea
