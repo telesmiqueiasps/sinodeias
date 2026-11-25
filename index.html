@@ -1,1 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinodeias — Inteligência Artificial & Raciocínio Editorial</title>
+  
+  <!-- Fontes Geométricas & Monospace de Alta Fidelidade (DESIGN.md) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Customizados no Padrão Azul Escuro e Branco -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+  <!-- Overlay para Mobile Drawer -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-container">
+    
+    <!-- ====================================================================
+         SIDEBAR / NAVEGAÇÃO LATERAL
+         ==================================================================== -->
+    <aside class="sidebar" id="sidebar">
+      
+      <!-- Cabeçalho da Sidebar -->
+      <div class="sidebar-header">
+        <a href="#" class="brand-badge" id="brand-home">
+          <div class="brand-logo-icon">
+            <!-- Ícone Sinapse / Nó de Ideias do Sinodeias -->
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-title">
+            Sinodeias
+            <span class="brand-tag">v3.0</span>
+          </div>
+        </a>
+        <button class="btn-icon-ghost" id="btn-toggle-sidebar" title="Recolher menu lateral">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <line x1="9" y1="3" x2="9" y2="21"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Ação Novo Chat (Padrão Agência / Pílula Dupla) -->
+      <div class="sidebar-action-wrap">
+        <button class="btn-new-chat" id="btn-new-chat">
+          <div class="left-content">
+            <span class="pill-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+            <span>Novo Chat</span>
+          </div>
+          <span class="shortcut">⌘K</span>
+        </button>
+      </div>
+
+      <!-- Campo de Busca em Conversas -->
+      <div class="sidebar-search">
+        <div class="search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="sidebar-search" class="sidebar-search-input" placeholder="Buscar conversas...">
+        </div>
+      </div>
+
+      <!-- Histórico de Conversas Agrupado -->
+      <div class="sidebar-history" id="history-list">
+        
+        <div class="history-section-title">Hoje</div>
+        <div class="history-item active" data-chat-type="software">
+          <span class="title">Microsserviços com Kafka</span>
+          <div class="history-item-actions">
+            <button class="history-action-btn" title="Mais opções">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="history-item" data-chat-type="editorial">
+          <span class="title">Estratégia Editorial de Lançamento</span>
+          <div class="history-item-actions">
+            <button class="history-action-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="history-section-title">Ontem</div>
+        <div class="history-item" data-chat-type="code">
+          <span class="title">Otimização de Índices SQL</span>
+          <div class="history-item-actions">
+            <button class="history-action-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="history-item" data-chat-type="research">
+          <span class="title">Fronteiras em Raciocínio de IA</span>
+          <div class="history-item-actions">
+            <button class="history-action-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="history-section-title">Últimos 7 dias</div>
+        <div class="history-item" data-chat-type="software">
+          <span class="title">Refatoração de API em Go</span>
+        </div>
+        <div class="history-item" data-chat-type="editorial">
+          <span class="title">Design Tokens & 8px Grid</span>
+        </div>
+      </div>
+
+      <!-- Rodapé do Usuário -->
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="avatar-circle">SD</div>
+          <div class="user-info">
+            <span class="user-name">Sinodeias User</span>
+            <span class="user-tier">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Plano Pro Enterprise
+            </span>
+          </div>
+        </div>
+        <button class="btn-icon-ghost" title="Configurações de Conta">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         ÁREA PRINCIPAL DE CHAT
+         ==================================================================== -->
+    <main class="main-chat-area">
+      
+      <!-- Barra Superior Flutuante -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <!-- Botão Mobile Toggle -->
+          <button class="btn-icon-ghost" id="btn-mobile-toggle" title="Abrir menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+
+          <!-- Seletor de Modelo em Formato Pílula -->
+          <div class="model-selector">
+            <button class="model-pill-btn" id="model-pill-btn">
+              <span class="model-status-dot"></span>
+              <span id="current-model-label">Sinodeias 3.0 Ultra</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+
+            <!-- Dropdown de Modelos -->
+            <div class="model-dropdown-menu" id="model-dropdown">
+              <button class="model-option active" data-model="Sinodeias 3.0 Ultra">
+                <div class="model-option-content">
+                  <h4>Sinodeias 3.0 Ultra</h4>
+                  <p>Máxima precisão analítica e raciocínio multi-passo profundo.</p>
+                </div>
+              </button>
+              <button class="model-option" data-model="Sinodeias 2.5 Pro">
+                <div class="model-option-content">
+                  <h4>Sinodeias 2.5 Pro</h4>
+                  <p>Equilíbrio ideal entre velocidade, síntese e engenharia de software.</p>
+                </div>
+              </button>
+              <button class="model-option" data-model="Sinodeias Flash Rápido">
+                <div class="model-option-content">
+                  <h4>Sinodeias Flash Rápido</h4>
+                  <p>Inferência ultrarrápida para tarefas conversacionais cotidianas.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ações do Topo -->
+        <div class="navbar-right">
+          <!-- Alternador de Tema (Azul Escuro / Modo Claro Editorial) -->
+          <button class="btn-icon-ghost" id="btn-theme-toggle" title="Alternar Modo Escuro / Claro">
+            <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+
+          <!-- Compartilhar Conversa -->
+          <button class="btn-icon-ghost" id="btn-share" title="Compartilhar sessão">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="18" cy="5" r="3"/>
+              <circle cx="6" cy="12" r="3"/>
+              <circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Container Rolável das Mensagens -->
+      <section class="chat-scroll-container" id="chat-scroll">
+        <div class="chat-inner-wrapper" id="chat-inner">
+          
+          <!-- Tela de Boas-Vindas (Hero Editorial quando vazio) -->
+          <div class="welcome-screen" id="welcome-screen">
+            <div class="hero-pill-badge">
+              <svg class="sparkle-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/>
+              </svg>
+              Precisão Editorial & Inteligência
+            </div>
+
+            <h1 class="hero-title">O que você gostaria de construir hoje?</h1>
+            <p class="hero-subtitle">
+              O <strong>Sinodeias</strong> sintetiza raciocínio lógico profundo, arquitetura técnica e clareza editorial com velocidade de pensamento.
+            </p>
+
+            <!-- Grid de Sugestões de Prompts -->
+            <div class="suggestion-grid">
+              
+              <!-- Card 1 -->
+              <div class="suggestion-card" data-prompt="Como projetar uma arquitetura de microsserviços orientada a eventos usando Kafka com máxima resiliência?">
+                <div class="suggestion-card-header">
+                  <span class="suggestion-tag">Sistemas Distribuídos</span>
+                  <svg class="suggestion-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+                <div class="suggestion-text">
+                  Arquitetura de microsserviços orientada a eventos com Kafka e Outbox Pattern.
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="suggestion-card" data-prompt="Crie uma estratégia editorial e manifesto visual de lançamento para um produto inovador de IA com alto contraste.">
+                <div class="suggestion-card-header">
+                  <span class="suggestion-tag">Estratégia & Design</span>
+                  <svg class="suggestion-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+                <div class="suggestion-text">
+                  Manifesto visual editorial e tom de voz de alta fidelidade para lançamento.
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="suggestion-card" data-prompt="Como otimizar consultas analíticas complexas no PostgreSQL eliminando sequential scans e gargalos de IO?">
+                <div class="suggestion-card-header">
+                  <span class="suggestion-tag">Banco de Dados</span>
+                  <svg class="suggestion-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+                <div class="suggestion-text">
+                  Otimização técnica de SQL com índices compostos e análise de planos EXPLAIN.
+                </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="suggestion-card" data-prompt="Quais são as principais tendências e avanços recentes em arquiteturas de IA para raciocínio computacional?">
+                <div class="suggestion-card-header">
+                  <span class="suggestion-tag">Pesquisa Avançada</span>
+                  <svg class="suggestion-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+                <div class="suggestion-text">
+                  Test-time compute scaling, modelos híbridos SSM e agentes autônomos de loop fechado.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           DOCK INFERIOR FLUTUANTE (INPUT ESTILO CHATGPT / GEMINI)
+           ==================================================================== -->
+      <footer class="bottom-dock-wrapper">
+        <div class="input-card-container">
+          
+          <!-- Modos de Capacidade Rápida -->
+          <div class="prompt-mode-pills">
+            <button class="mode-pill active" data-mode="reasoning">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+              Raciocínio Profundo
+            </button>
+            <button class="mode-pill" data-mode="webSearch">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              Pesquisa Web
+            </button>
+            <button class="mode-pill" data-mode="code">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+              Modo Código
+            </button>
+          </div>
+
+          <!-- Barra de Visualização de Arquivo Anexado -->
+          <div class="attachment-preview-bar" id="attachment-bar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+              <polyline points="13 2 13 9 20 9"/>
+            </svg>
+            <span class="file-name" id="attachment-name">arquivo.pdf</span>
+            <button class="btn-remove-attachment" id="btn-remove-attachment" title="Remover anexo">✕</button>
+          </div>
+
+          <!-- Linha de Input Textarea e Controles -->
+          <div class="prompt-input-row">
+            <!-- Input File Oculto -->
+            <input type="file" id="hidden-file-input" style="display: none;">
+            
+            <!-- Botão de Anexo -->
+            <button class="btn-dock-icon" id="btn-attach" title="Anexar arquivos ou imagens">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+              </svg>
+            </button>
+
+            <!-- Textarea com Auto-expansão -->
+            <textarea 
+              id="prompt-input" 
+              class="prompt-textarea" 
+              rows="1" 
+              placeholder="Pergunte ao Sinodeias ou use Shift+Enter para quebra de linha..."></textarea>
+
+            <!-- Controles do Lado Direito -->
+            <div class="prompt-controls">
+              <!-- Microfone / Reconhecimento de Voz -->
+              <button class="btn-dock-icon" id="btn-mic" title="Ditado por voz">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </button>
+
+              <!-- Botão de Envio (Estilo Agência com Easing Preciso) -->
+              <button class="btn-send" id="btn-send" disabled title="Enviar mensagem">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="19" x2="12" y2="5"/>
+                  <polyline points="5 12 12 5 19 12"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dock-disclaimer">
+          O Sinodeias pode cometer imprecisões. Valide informações críticas de negócio e engenharia.
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- Script Principal -->
+  <script src="app.js"></script>
+</body>
+</html>
